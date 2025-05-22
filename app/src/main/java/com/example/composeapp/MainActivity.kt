@@ -31,6 +31,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
+import com.example.composeapp.components.CountryCardWithConstraintLayout
+import com.example.composeapp.data.CountryInfo
 
 class MainActivity : ComponentActivity() {
 
@@ -54,33 +56,6 @@ class MainActivity : ComponentActivity() {
 }
 
 
-@Composable
-fun CountryCardWithConstraintLayout(countryInfo: CountryInfo) {
-    ConstraintLayout(modifier = Modifier
-        .wrapContentHeight()
-        .wrapContentWidth()
-        .padding(2.dp)) {
-
-        val (flag, commonName, capital) = createRefs()
-
-        val imageResId = countryInfo.flagId
-        val imagePainter: Painter = painterResource(id = imageResId)
-        Image(
-            painter = imagePainter,
-            contentDescription = "Country Flag",
-            contentScale = ContentScale.Crop,
-            modifier = Modifier
-                .width(70.dp)
-                .height(70.dp)
-                .padding(2.dp)
-                .constrainAs(flag) {
-                    top.linkTo(parent.top)
-                    start.linkTo(parent.start)
-
-                }
-        )
-    }
-}
 
 @Composable
 fun MainScreen(indiaInfo1: CountryInfo) {

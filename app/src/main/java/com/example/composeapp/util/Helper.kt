@@ -1,8 +1,8 @@
 package com.example.composeapp
 
 import android.content.Context
-import com.codetutor.countryinfoapp.R
 import com.example.composeapp.data.Country
+import com.example.composeapp.data.CountryInfo
 import kotlinx.serialization.json.Json
 
 
