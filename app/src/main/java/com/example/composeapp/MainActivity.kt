@@ -85,16 +85,16 @@ fun CountryCardWithConstraintLayout(countryInfo: CountryInfo) {
 
 @Composable
 fun MainScreen(indiaInfo1: CountryInfo) {
-          Surface (modifier = Modifier.fillMaxSize().border(10.dp, _root_ide_package_.androidx.compose.ui.graphics.Color.Red).wrapContentHeight(Alignment.Top),
+          Surface (modifier = Modifier.fillMaxSize().border(10.dp, _root_ide_package_.androidx.compose.ui.graphics.Color.LightGray).wrapContentHeight(align = Alignment.Top),
 
-              color = MaterialTheme.colorScheme.secondary
+              color = MaterialTheme.colorScheme.surface
         ){
               CountryCardWithConstraintLayout(indiaInfo1)
 
     }
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = true, backgroundColor = 0x800000)
 @Composable
 fun DefaultPreview() {
     val indiaInfo = CountryInfo(
