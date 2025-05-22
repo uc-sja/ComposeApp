@@ -1,4 +1,4 @@
-package com.codetutor.countryinfoapp.data
+package com.example.composeapp.data
 
 data class CountryInfo(val flagId: Int,
                        val commonName: String,
