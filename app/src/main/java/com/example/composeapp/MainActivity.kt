@@ -2,12 +2,14 @@ package com.example.composeapp
 
 import android.os.Bundle
 import android.util.Log
+import android.view.RoundedCorner
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -18,8 +20,11 @@ import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.progressSemantics
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.material3.Button
+import androidx.compose.material3.CardElevation
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
@@ -69,26 +74,28 @@ fun MainScreen(indiaInfo1: CountryInfo) {
             val context = LocalContext.current
     val countries = getCountryListFromJson(context)
 
-
-          Surface (modifier = Modifier
-              .fillMaxSize()
-              .border(10.dp, _root_ide_package_.androidx.compose.ui.graphics.Color.LightGray)
-              .wrapContentHeight(align = Alignment.Top),
-
-              color = MaterialTheme.colorScheme.surface
-        ){
-
-              LazyColumn {
+              LazyColumn() {
                   items(countries) {
                       Log.d(TAG, "MainScreen: "+it.toString())
-                      CountryCardWithConstraintLayout(it)
+
+
+                      Surface(modifier = Modifier.fillMaxSize()
+                          .padding(horizontal = 10.dp, vertical = 5.dp)
+                          .border(2.dp, _root_ide_package_.androidx.compose.ui.graphics.Color.Black, shape = RoundedCornerShape(10.dp))
+                          .wrapContentHeight(align = Alignment.Top),
+                          shadowElevation = 2.dp,
+                          color = MaterialTheme.colorScheme.surface
+                      ){
+                          CountryCardWithConstraintLayout(it)
+
+                      }
 
                   }
               }
-    }
+
 }
 
-@Preview(showBackground = true, backgroundColor = 0x800000)
+@Preview(showBackground = true, backgroundColor = 0xffffff)
 @Composable
 fun DefaultPreview() {
     val indiaInfo = CountryInfo(

@@ -9,9 +9,11 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
@@ -30,14 +32,16 @@ fun CountryCardWithConstraintLayout(country: Country){
         modifier = Modifier
             .wrapContentHeight()
             .fillMaxWidth()
-            .padding(5.dp)
+
     ) {
         val (flag, commonName, capital, officialName, region, subregion, currencySymbol, currencyName, mobileCode, tld) = createRefs()
 
         country?.let {
             AsyncImage(model = it?.flags?.png,
                 contentScale = ContentScale.Crop,
-                contentDescription = it?.flag, modifier =Modifier.fillMaxWidth(0.35f)
+                contentDescription = it?.flag,
+                modifier =Modifier.fillMaxWidth(0.40f)
+                    .clip(RoundedCornerShape(10.dp))
                     .height(70.dp)
                     .padding(2.dp)
                     .constrainAs(flag) {
@@ -59,7 +63,7 @@ fun CountryCardWithConstraintLayout(country: Country){
                     },
                 fontFamily = FontFamily.SansSerif,
                 textAlign = TextAlign.Center,
-                fontSize = 20.sp
+                fontSize = 17.sp
             )
         }
 
@@ -87,7 +91,7 @@ fun CountryCardWithConstraintLayout(country: Country){
                         end.linkTo(parent.end)
                     }
                     .padding(2.dp)
-                    .fillMaxWidth(0.65f))
+                    .fillMaxWidth(0.60f))
         }
 
         country?.region?.let {
@@ -101,7 +105,7 @@ fun CountryCardWithConstraintLayout(country: Country){
                         top.linkTo(officialName.bottom)
                     }
                     .padding(2.dp)
-                    .fillMaxWidth(0.8f))
+                    .fillMaxWidth(0.6f))
         }
 
         country.subregion?.let {
@@ -115,7 +119,7 @@ fun CountryCardWithConstraintLayout(country: Country){
                         end.linkTo(officialName.end)
                     }
                     .padding(2.dp)
-                    .fillMaxWidth(0.8f))
+                    .fillMaxWidth(0.6f))
         }
 
         country?.currencies?.entries?.first()?.let{
@@ -123,19 +127,23 @@ fun CountryCardWithConstraintLayout(country: Country){
                 modifier = Modifier
                     .constrainAs(currencySymbol) {
                         start.linkTo(flag.end, margin = 30.dp)
-                        bottom.linkTo(parent.bottom, margin = 8.dp)
+                        bottom.linkTo(flag.bottom, margin = 8.dp)
                     })
         }
 
         country?.currencies?.entries?.first()?.let{
             Text(text = it.value.name.toString(),
+                fontSize = 15.sp,
+                textAlign = TextAlign.Center,
                 modifier = Modifier
                     .constrainAs(currencyName) {
                         top.linkTo(subregion.bottom)
-                        start.linkTo(currencySymbol.end, margin = 12.dp)
+                        start.linkTo(currencySymbol.end, margin = 5.dp)
                         bottom.linkTo(parent.bottom, margin = 5.dp)
-                        end.linkTo(mobileCode.start)
-                    }, textAlign = TextAlign.Center
+                        end.linkTo(mobileCode.start, margin = 5.dp)
+                    }
+                    .padding(10.dp)
+                    .fillMaxWidth(0.4f)
             )
         }
 
