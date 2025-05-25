@@ -65,4 +65,5 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.1")
     implementation(libs.coil.compose)
+    implementation("androidx.compose.material:material-icons-extended:1.0.0-alpha08")
 }
