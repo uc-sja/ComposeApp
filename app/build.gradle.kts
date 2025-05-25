@@ -55,7 +55,7 @@ dependencies {
     implementation(libs.androidx.material3)
     testImplementation(libs.junit)
 
-    implementation("androidx.constraintlayout:constraintlayout-compose:1.0.1")
+    implementation("androidx.constraintlayout:constraintlayout-compose:1.1.1")
 
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -63,7 +63,7 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.1")
+    implementation(libs.jetbrains.kotlinx.serialization.json)
     implementation(libs.coil.compose)
-    implementation("androidx.compose.material:material-icons-extended:1.0.0-alpha08")
+    implementation("androidx.compose.material:material-icons-extended:1.7.8")
 }

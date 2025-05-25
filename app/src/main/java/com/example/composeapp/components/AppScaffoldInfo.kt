@@ -1,4 +1,4 @@
-package com.codetutor.countryinfoapp.components
+package com.example.composeapp.components
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -37,7 +37,7 @@ fun AppScaffoldInfo() {
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             TopAppBar(
-                colors = TopAppBarDefaults.sma(
+                colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.primaryContainer,
                     titleContentColor = MaterialTheme.colorScheme.primary
                 ),
@@ -62,6 +62,8 @@ fun AppScaffoldInfo() {
                 scrollBehavior = scrollBehavior
             )
         },
+
+
 
         bottomBar = {
             BottomAppBar {
